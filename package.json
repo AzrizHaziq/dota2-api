@@ -8,7 +8,7 @@
     "url": "https://github.com/TwinLight/dota2-api.git"
   },
   "scripts": {
-    "commit" : "git-cz",
+    "commit" : "git add . && git-cz",
     "test": "npx mocha src/index.test.js",
     "test:watch": "npx mocha src/index.test.js -w",
     "postversion": "git push origin master && git push --tags && npm publish",

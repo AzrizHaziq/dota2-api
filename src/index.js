@@ -14,13 +14,34 @@ var dota = {
     abilities : abilities,
 }
 
-var random = function(key){
+var isKeyInvalid = function(key){
 
     if( !(key in dota) || key === undefined){
-        return console.warn("must be either " + Object.keys(dota).join(' or '))
+        throw "must be either " + Object.keys(dota).join('/')
     }
+}
+
+var random = function(key){
+
+    isKeyInvalid(key)
 
     return dota[key][ Math.floor(Math.random() * dota[key].length) ]
+}
+
+var randomXTimes = function(key, times){
+
+    isKeyInvalid(key)
+
+    if(typeof times !== 'number')
+        throw 'times is not a number (' + times + ": " + typeof times + ")"
+
+    var rand = [];
+
+    for(var i = 0; i< times; i++){
+        rand.push(random(key))
+    }
+
+    return rand;
 }
 
 module.exports = {
@@ -31,4 +52,5 @@ module.exports = {
     regions : regions,
     abilities : abilities,
     random : random,
+    randomXTimes : randomXTimes
 }
