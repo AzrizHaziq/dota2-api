@@ -8,9 +8,9 @@
     "url": "https://github.com/TwinLight/dota2-api.git"
   },
   "scripts": {
-    "commit" : "git add . && git-cz",
-    "test": "npx mocha src/index.test.js",
-    "test:watch": "npx mocha src/index.test.js -w",
+    "commit": "git add . && git-cz",
+    "test": "mocha src/index.test.js",
+    "test:watch": "mocha src/index.test.js -w",
     "postversion": "git push origin master && git push --tags && npm publish",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -33,7 +33,7 @@
   },
   "config": {
     "commitizen": {
-      "path" : "node_modules/cz-conventional-changelog"
+      "path": "node_modules/cz-conventional-changelog"
     }
   }
 }
