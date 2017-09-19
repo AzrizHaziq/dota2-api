@@ -9,6 +9,7 @@ node_js:
   - '8'
 before_script:
   - npm prune
+  - npm install --production
 after_success:
   - npm run semantic-release
 script:
