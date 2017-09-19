@@ -1,0 +1,12 @@
+{
+  "name": "dota2-api",
+  "version": "1.0.0",
+  "description": "DotA 2 Web API JS wrapper, an extension from github/kronusme/dota2-api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["Dota2", "Dota 2 Items", "Dota 2 Abilities", "Dota 2 Heroes", "Dota 2 Steam"],
+  "author": "Azriz Haziq <azrizhaziq@gmail.com>",
+  "license": "ISC"
+}
