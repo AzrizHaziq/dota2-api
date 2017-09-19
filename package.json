@@ -8,8 +8,7 @@
         "url": "git+https://github.com/TwinLight/dota2-api"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "version"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
         "Dota2",
