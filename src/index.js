@@ -1,4 +1,8 @@
+var items = require('../data/items.json').items
+var modes = require('../data/modes.json').modes
 var heroes = require('../data/heroes.json').heroes
+var lobbies = require('../data/lobbies.json').lobbies
+var regions = require('../data/regions.json').regions
 var abilities = require('../data/abilities.json').abilities
 
 var dota = {
