@@ -1,6 +1,6 @@
 {
     "name": "dota2-json-api",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "DotA 2 Web API JS wrapper, an extension from github/kronusme/dota2-api",
     "main": "src/index.js",
     "repository": {
