@@ -1,28 +1,37 @@
 {
-    "name": "dota2-json-api",
-    "version": "1.1.0-beta.0",
-    "description": "DotA 2 Web API JS wrapper, an extension from github/kronusme/dota2-api",
-    "main": "src/index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/TwinLight/dota2-api"
-    },
-    "scripts": {
-        "test": "npx mocha src/index.test.js -w",
-        "postversion": "git push origin master && git push --tags && npm publish"
-    },
-    "keywords": [
-        "Dota2",
-        "Dota 2 Items",
-        "Dota 2 Abilities",
-        "Dota 2 Heroes",
-        "Dota 2 Steam"
-    ],
-    "author": "Azriz Haziq <azrizhaziq@gmail.com>",
-    "license": "MIT",
-    "dependencies": {},
-    "devDependencies": {
-        "chai": "^4.1.2",
-        "mocha": "^3.5.3"
-    }
+  "name": "dota2-json-api",
+  "version": "0.0.0-development",
+  "description": "DotA 2 Web API JS wrapper, an extension from github/kronusme/dota2-api",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TwinLight/dota2-api.git"
+  },
+  "scripts": {
+    "commit" : "git-cz",
+    "test": "npx mocha src/index.test.js",
+    "test:watch": "npx mocha src/index.test.js -w",
+    "postversion": "git push origin master && git push --tags && npm publish",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "keywords": [
+    "Dota2",
+    "Dota 2 Items",
+    "Dota 2 Abilities",
+    "Dota 2 Heroes",
+    "Dota 2 Steam"
+  ],
+  "author": "Azriz Haziq <azrizhaziq@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "mocha": "^3.5.3",
+    "semantic-release": "^8.0.0"
+  },
+  "czConfig" : {
+    "path" : "node_modules/cz-conventional-changelog"
+  }
 }
