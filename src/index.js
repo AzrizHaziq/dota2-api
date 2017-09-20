@@ -25,16 +25,18 @@ var random = function(key, times){
 
     isKeyInvalid(key)
 
-    var _times = times || 1
-
-    if(_times === 1 ) {
+    if(times === undefined){
         return getRandomItem(key)
     }
 
-    else {
+    else {  
+
+        if(typeof times !== 'number')
+            throw 'Times is not a number : ' + times + " is " + typeof times
+
         var rand = [];
 
-        for(var i = 0; i < _times; i++){
+        for(var i = 0; i < times ; i++){
             rand.push(getRandomItem(key))
         }
 
