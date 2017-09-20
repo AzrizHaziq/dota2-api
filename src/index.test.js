@@ -231,10 +231,10 @@ describe('Dota2 JSON Api', function(){
 
                 //random 5 item
                 it(dota.tests[3].title, function(){
-                    var randomItems = dota2Api.random(key, 5)
+                    var randomItems = dota2Api.random(key, 3)
                     return expect(randomItems)
                         .to.be.an('array')
-                        .to.have.lengthOf(5)
+                        .to.have.lengthOf(3)
                 })
 
                 //search item
