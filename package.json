@@ -29,12 +29,13 @@
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
     "ghooks": "^2.0.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.5.3",
     "semantic-release": "^8.0.0"
   },
   "config": {
-    "ghooks" : {
-      "pre-commit" : "npm run test"
+    "ghooks": {
+      "pre-commit": "npm run test"
     },
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
