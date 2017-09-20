@@ -37,7 +37,10 @@ var dotas = [
             },
             {
                 title : 'should return searched `Ability Draft` array'
-            }
+            },
+            {
+                title : 'should throw error when random a item'
+            },
         ]
     },
     {
@@ -68,7 +71,10 @@ var dotas = [
             },
             {
                 title : 'should return searched `recipe_urn_of_shadows` array'
-            }
+            },
+            {
+                title : 'should throw error when random a item'
+            },
         ]
     },
     {
@@ -104,7 +110,10 @@ var dotas = [
             },
             {
                 title : 'should return searched `leshrac` array'
-            }
+            },
+            {
+                title : 'should throw error when random a item'
+            },
         ]
     },
     {
@@ -135,7 +144,10 @@ var dotas = [
             },
             {
                 title : 'should return searched `Solo Queue` array'
-            }
+            },
+            {
+                title : 'should throw error when random a item'
+            },
         ]
     },
     {
@@ -166,7 +178,10 @@ var dotas = [
             },
             {
                 title : 'should return searched `China` array'
-            }
+            },
+            {
+                title : 'should throw error when random a item'
+            },
         ]
     },
     {
@@ -197,14 +212,17 @@ var dotas = [
             },
             {
                 title : 'should return searched `faceless_void_chronosphere` array'
-            }
+            },
+            {
+                title : 'should throw error when random a item'
+            },
         ]
     }
 ]
 
 describe('Dota2 JSON Api', function(){
 
-    describe('Basic functionality of Dota2 JSON API', function(){
+    describe('/Basic functionality', function(){
 
         dotas.forEach(function(dota){
 
@@ -214,23 +232,23 @@ describe('Dota2 JSON Api', function(){
                     data = dota.data;
 
                 //check obj structure
-                it(dota.tests[0].title, function(){
+                it("/" + dota.tests[0].title, function(){
                     expect(dota.items).to.satisfy(dota.tests[0].callback)
                 })
 
                 //should contain an obj of
-                it(dota.tests[1].title, function(){
+                it("/" + dota.tests[1].title, function(){
                     return expect(dota.items).to.deep.include(data)
                 })
 
                 //random item
-                it(dota.tests[2].title, function(){
+                it("/" + dota.tests[2].title, function(){
                     var randomItem = dota2Api.random(key)
                     return expect(dota.items).to.deep.include(randomItem)
                 })
 
                 //random 5 item
-                it(dota.tests[3].title, function(){
+                it("/" + dota.tests[3].title, function(){
                     var randomItems = dota2Api.random(key, 3)
                     return expect(randomItems)
                         .to.be.an('array')
@@ -238,11 +256,31 @@ describe('Dota2 JSON Api', function(){
                 })
 
                 //search item
-                it(dota.tests[4].title, function(){
+                it("/" + dota.tests[4].title, function(){
                     var searchedItem = dota2Api.search(key, data.name)
-                    return expect(searchedItem)
+
+                    expect(searchedItem)
                         .to.be.an('array')
                         .to.deep.include(data)
+
+                    expect(function (){
+                        dota2Api.search(key)
+                    }).to.throw();
+
+                })
+
+                //throw error when random an item
+                it("/" + dota.tests[5].title, function(){
+                    expect(function(){
+                        dota2Api.random(key, 'throw')
+                    }).to.throw();
+                })
+
+                //throw error when random an item
+                it("is key valid", function(){
+                    expect(function(){
+                        dota2Api.random('asdasdads')
+                    }).to.throw();
                 })
 
             })

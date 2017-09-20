@@ -10,10 +10,12 @@ node_js:
 before_script:
   - npm prune
   - npm install --production
-after_success:
-  - npm run semantic-release
 script:
   - npm run test
+  - npm run code-coverage
+after_success:
+  - npm run semantic-release
+  - npm run report-coverage
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

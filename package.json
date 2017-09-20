@@ -9,7 +9,9 @@
   },
   "scripts": {
     "commit": "git add . && git-cz",
-    "test": "mocha src/index.test.js",
+    "test": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js",
+    "code-coverage": "istanbul  check-coverage --statements 80 --branches 80 --functions 80 --lines 80",
+    "report-coverage" : "cat ./coverage/lcov.info | codecov",
     "test:watch": "mocha src/index.test.js -w",
     "postversion": "git push origin master && git push --tags && npm publish",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -26,6 +28,7 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.1.2",
+    "codecov.io": "^0.1.6",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
     "ghooks": "^2.0.0",

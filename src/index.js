@@ -32,7 +32,7 @@ var random = function(key, times){
     else {  
 
         if(typeof times !== 'number')
-            throw 'Times is not a number : ' + times + " is " + typeof times
+            throw new TypeError('Times is not a number : ' + times + " is " + typeof times)
 
         var rand = [];
 
