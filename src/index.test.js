@@ -35,7 +35,7 @@ describe('Dota2 JSON Api', function(){
         })
 
         it('should contain random array of 5 mods ', function(){
-            var random5Mods = dota2Api.randomXTimes('mods', 5)
+            var random5Mods = dota2Api.random('mods', 5)
             return expect(random5Mods)
                 .to.be.an('array')
                 .to.have.lengthOf(5)
@@ -68,7 +68,7 @@ describe('Dota2 JSON Api', function(){
         })
 
         it('should contain random array of 5 Items ', function(){
-            var random5Items = dota2Api.randomXTimes('items', 5)
+            var random5Items = dota2Api.random('items', 5)
             return expect(random5Items)
                 .to.be.an('array')
                 .to.have.lengthOf(5)
@@ -106,7 +106,7 @@ describe('Dota2 JSON Api', function(){
         })
 
         it('should contain random array of 5 Items ', function(){
-            var random5Items = dota2Api.randomXTimes('items', 5)
+            var random5Items = dota2Api.random('items', 5)
             return expect(random5Items)
                 .to.be.an('array')
                 .to.have.lengthOf(5)
@@ -139,7 +139,7 @@ describe('Dota2 JSON Api', function(){
         })
 
         it('should contain random array of 5 Lobbies ', function(){
-            var random5Lobbies = dota2Api.randomXTimes('lobbies', 5)
+            var random5Lobbies = dota2Api.random('lobbies', 5)
             return expect(random5Lobbies)
                 .to.be.an('array')
                 .to.have.lengthOf(5)
@@ -172,7 +172,7 @@ describe('Dota2 JSON Api', function(){
         })
 
         it('should contain random array of 5 Items ', function(){
-            var random5Regions = dota2Api.randomXTimes('regions', 5)
+            var random5Regions = dota2Api.random('regions', 5)
             return expect(random5Regions)
                 .to.be.an('array')
                 .to.have.lengthOf(5)
@@ -205,7 +205,7 @@ describe('Dota2 JSON Api', function(){
         })
 
         it('should contain random array of 5 Abilities ', function(){
-            var random5Abilities = dota2Api.randomXTimes('abilities', 5)
+            var random5Abilities = dota2Api.random('abilities', 5)
             return expect(random5Abilities)
                 .to.be.an('array')
                 .to.have.lengthOf(5)

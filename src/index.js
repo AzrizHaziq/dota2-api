@@ -21,27 +21,29 @@ var isKeyInvalid = function(key){
     }
 }
 
-var random = function(key){
+var random = function(key, times){
 
     isKeyInvalid(key)
 
-    return dota[key][ Math.floor(Math.random() * dota[key].length) ]
-}
+    var _times = times || 1
 
-var randomXTimes = function(key, times){
-
-    isKeyInvalid(key)
-
-    if(typeof times !== 'number')
-        throw 'times is not a number (' + times + ": " + typeof times + ")"
-
-    var rand = [];
-
-    for(var i = 0; i< times; i++){
-        rand.push(random(key))
+    if(_times === 1 ) {
+        return getRandomItem(key)
     }
 
-    return rand;
+    else {
+        var rand = [];
+
+        for(var i = 0; i < _times; i++){
+            rand.push(getRandomItem(key))
+        }
+
+        return rand;
+    }
+
+    function getRandomItem(key){
+        return dota[key][ Math.floor(Math.random() * dota[key].length) ]
+    }
 }
 
 module.exports = {
@@ -51,6 +53,5 @@ module.exports = {
     lobbies : lobbies,
     regions : regions,
     abilities : abilities,
-    random : random,
-    randomXTimes : randomXTimes
+    random : random
 }
