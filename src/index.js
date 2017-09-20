@@ -46,6 +46,18 @@ var random = function(key, times){
     }
 }
 
+var search = function(key, searchItem){
+
+    isKeyInvalid(key)
+
+    if(searchItem === undefined)
+        throw 'Search keyword is undefined'
+
+    return dota[key].filter(function(item){
+        return item.name === searchItem
+    })
+}
+
 module.exports = {
     mods : mods,
     items : items,
@@ -53,5 +65,6 @@ module.exports = {
     lobbies : lobbies,
     regions : regions,
     abilities : abilities,
-    random : random
+    random : random,
+    search : search
 }
