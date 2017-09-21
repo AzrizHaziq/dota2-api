@@ -52,6 +52,7 @@
         "istanbul": "^0.4.5",
         "json-loader": "^0.5.7",
         "mocha": "^3.5.3",
+        "npm-run-all": "^4.1.1",
         "nyc": "^11.2.1",
         "rimraf": "^2.6.2",
         "semantic-release": "^8.0.0",
