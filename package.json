@@ -1,47 +1,77 @@
 {
-  "name": "dota2-json-api",
-  "version": "0.0.0-development",
-  "description": "DotA 2 Web API JS wrapper, an extension from github/kronusme/dota2-api",
-  "main": "src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/TwinLight/dota2-api.git"
-  },
-  "scripts": {
-    "commit": "git add . && git-cz",
-    "test": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js",
-    "code-coverage": "istanbul  check-coverage --statements 80 --branches 80 --functions 80 --lines 80",
-    "report-coverage" : "cat ./coverage/lcov.info | codecov",
-    "test:watch": "mocha src/index.test.js -w",
-    "postversion": "git push origin master && git push --tags && npm publish",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-  },
-  "keywords": [
-    "Dota2",
-    "Dota 2 Items",
-    "Dota 2 Abilities",
-    "Dota 2 Heroes",
-    "Dota 2 Steam"
-  ],
-  "author": "Azriz Haziq <azrizhaziq@gmail.com>",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "codecov.io": "^0.1.6",
-    "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.0.0",
-    "ghooks": "^2.0.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.5.3",
-    "semantic-release": "^8.0.0"
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run test"
+    "name": "dota2-json-api",
+    "version": "0.0.0-development",
+    "description": "DotA 2 Web API JS wrapper, an extension from github/kronusme/dota2-api",
+    "main": "dist/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TwinLight/dota2-api.git"
     },
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
+    "scripts": {
+        "commit": "git-cz",
+        "prebuild": "rimraf dist",
+        "build": "babel --out-dir dist --copy-files --ignore *.test.js src",
+        "cover": "nyc npm t",
+        "test:watch": "npm t -- -w",
+        "test": "mocha src/index.test.js --compilers js:babel-core/register ",
+        "report-coverage": "cat ./coverage/lcov.info | codecov",
+        "code-coverage": "nyc check-coverage --statements 80 --branches 80 --functions 80 --lines 80",
+        "postversion": "git push origin master && git push --tags && npm publish",
+        "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    },
+    "files": [
+        "dist",
+        "src",
+        "README.md"
+    ],
+    "keywords": [
+        "Dota2",
+        "Dota 2 Items",
+        "Dota 2 Abilities",
+        "Dota 2 Heroes",
+        "Dota 2 Steam"
+    ],
+    "author": "Azriz Haziq <azrizhaziq@gmail.com>",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-preset-env": "^1.6.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
+        "chai": "^4.1.2",
+        "codecov.io": "^0.1.6",
+        "commitizen": "^2.9.6",
+        "cz-conventional-changelog": "^2.0.0",
+        "ghooks": "^2.0.0",
+        "istanbul": "^0.4.5",
+        "mocha": "^3.5.3",
+        "nyc": "^11.2.1",
+        "rimraf": "^2.6.2",
+        "semantic-release": "^8.0.0"
+    },
+    "config": {
+        "ghooks": {
+            "pre-commit": "npm run cover"
+        },
+        "commitizen": {
+            "path": "node_modules/cz-conventional-changelog"
+        }
+    },
+    "babel": {
+        "presets": [
+            [
+                "env",
+                {
+                    "targets": {
+                        "browsers": [
+                            "last 2 versions",
+                            "safari >= 7"
+                        ]
+                    }
+                }
+            ]
+        ]
     }
-  }
 }

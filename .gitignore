@@ -2,3 +2,7 @@
 .DS_store
 /node_modules
 /coverage
+/dist
+/package
+*.tgz
+/.nyc_output

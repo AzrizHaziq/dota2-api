@@ -1,27 +1,27 @@
-var mods = require('../data/mods.json').mods
-var items = require('../data/items.json').items
-var heroes = require('../data/heroes.json').heroes
-var lobbies = require('../data/lobbies.json').lobbies
-var regions = require('../data/regions.json').regions
-var abilities = require('../data/abilities.json').abilities
+import mods from './data/mods.json'
+import items from './data/items.json'
+import heroes from './data/heroes.json'
+import lobbies from './data/lobbies.json'
+import regions from './data/regions.json'
+import abilities from './data/abilities.json'
 
-var dota = {
-    mods : mods,
-    items : items,
-    heroes : heroes,
-    lobbies : lobbies,
-    regions : regions,
-    abilities : abilities,
+const dota = {
+    mods : mods.mods,
+    items : items.items,
+    heroes : heroes.heroes,
+    lobbies : lobbies.lobbies,
+    regions : regions.regions,
+    abilities : abilities.abilities,
 }
 
-var isKeyInvalid = function(key){
+const isKeyInvalid = function(key){
 
     if( !(key in dota) || key === undefined){
         throw "must be either " + Object.keys(dota).join('/')
     }
 }
 
-var random = function(key, times){
+const random = function(key, times){
 
     isKeyInvalid(key)
 
@@ -34,9 +34,9 @@ var random = function(key, times){
         if(typeof times !== 'number')
             throw new TypeError('Times is not a number : ' + times + " is " + typeof times)
 
-        var rand = [];
+        const rand = [];
 
-        for(var i = 0; i < times ; i++){
+        for(let i = 0; i < times ; i++){
             rand.push(getRandomItem(key))
         }
 
@@ -48,7 +48,7 @@ var random = function(key, times){
     }
 }
 
-var search = function(key, searchItem){
+const search = function(key, searchItem){
 
     isKeyInvalid(key)
 

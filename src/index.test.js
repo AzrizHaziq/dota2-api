@@ -1,17 +1,17 @@
-var mods = require('../data/mods.json').mods
-var items = require('../data/items.json').items
-var heroes = require('../data/heroes.json').heroes
-var lobbies = require('../data/lobbies.json').lobbies
-var regions = require('../data/regions.json').regions
-var abilities = require('../data/abilities.json').abilities
+import mods from './data/mods.json'
+import items from './data/items.json'
+import heroes from './data/heroes.json'
+import lobbies from './data/lobbies.json'
+import regions from './data/regions.json'
+import abilities from './data/abilities.json'
 
-var dota2Api = require('./index')
-var expect = require('chai').expect;
+import dota2Api from './index'
+import { expect } from 'chai'
 
-var dotas = [
+const dotas = [
     {
         title : 'Dota Mods',
-        items : mods,
+        items : mods.mods,
         key : 'mods',
         data : {
             "id" : 18,
@@ -45,7 +45,7 @@ var dotas = [
     },
     {
         title : 'Dota Items',
-        items : items,
+        items : items.items,
         key : 'items',
         data : {
             "id" : 91,
@@ -79,7 +79,7 @@ var dotas = [
     },
     {
         title : 'Dota Heroes',
-        items : heroes,
+        items : heroes.heroes,
         key : 'heroes',
         data : {
             "name" : "leshrac",
@@ -118,7 +118,7 @@ var dotas = [
     },
     {
         title : 'Dota Lobbies',
-        items : lobbies,
+        items : lobbies.lobbies,
         key : 'lobbies',
         data : {
             "id" : 6,
@@ -152,7 +152,7 @@ var dotas = [
     },
     {
         title : 'Dota Regions',
-        items : regions,
+        items : regions.regions,
         key : 'regions',
         data : {
             "id" : 224,
@@ -186,7 +186,7 @@ var dotas = [
     },
     {
         title : 'Dota Abilities',
-        items : abilities,
+        items : abilities.abilities,
         key : 'abilities',
         data : {
             "id" : 5185,
@@ -228,7 +228,7 @@ describe('Dota2 JSON Api', function(){
 
             describe(dota.title, function(){
 
-                var key = dota.key,
+                const key = dota.key,
                     data = dota.data;
 
                 //check obj structure
@@ -243,13 +243,13 @@ describe('Dota2 JSON Api', function(){
 
                 //random item
                 it("/" + dota.tests[2].title, function(){
-                    var randomItem = dota2Api.random(key)
+                    const randomItem = dota2Api.random(key)
                     return expect(dota.items).to.deep.include(randomItem)
                 })
 
                 //random 5 item
                 it("/" + dota.tests[3].title, function(){
-                    var randomItems = dota2Api.random(key, 3)
+                    const randomItems = dota2Api.random(key, 3)
                     return expect(randomItems)
                         .to.be.an('array')
                         .to.have.lengthOf(3)
@@ -257,7 +257,7 @@ describe('Dota2 JSON Api', function(){
 
                 //search item
                 it("/" + dota.tests[4].title, function(){
-                    var searchedItem = dota2Api.search(key, data.name)
+                    const searchedItem = dota2Api.search(key, data.name)
 
                     expect(searchedItem)
                         .to.be.an('array')
