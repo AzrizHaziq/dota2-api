@@ -9,13 +9,16 @@
     },
     "scripts": {
         "commit": "git-cz",
-        "prebuild": "rimraf dist",
-        "build": "babel --out-dir dist --copy-files --ignore *.test.js src",
         "cover": "nyc npm t",
         "test:watch": "npm t -- -w",
         "test": "mocha src/index.test.js --compilers js:babel-core/register ",
         "report-coverage": "cat ./coverage/lcov.info | codecov",
         "code-coverage": "nyc check-coverage --statements 80 --branches 80 --functions 80 --lines 80",
+        "prebuild": "rimraf dist",
+        "build": "npm-run-all --parallel build:*",
+        "build:main": "babel --out-dir dist --copy-files --ignore *.test.js src",
+        "build:umd": "webpack --output-filename index.umd.js",
+        "build:umd.main": "npm run build:umd -- -p",
         "postversion": "git push origin master && git push --tags && npm publish",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post"
     },
@@ -37,6 +40,7 @@
     "devDependencies": {
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
         "babel-preset-env": "^1.6.0",
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-stage-2": "^6.24.1",
@@ -46,10 +50,12 @@
         "cz-conventional-changelog": "^2.0.0",
         "ghooks": "^2.0.0",
         "istanbul": "^0.4.5",
+        "json-loader": "^0.5.7",
         "mocha": "^3.5.3",
         "nyc": "^11.2.1",
         "rimraf": "^2.6.2",
-        "semantic-release": "^8.0.0"
+        "semantic-release": "^8.0.0",
+        "webpack": "^3.6.0"
     },
     "config": {
         "ghooks": {
@@ -58,20 +64,5 @@
         "commitizen": {
             "path": "node_modules/cz-conventional-changelog"
         }
-    },
-    "babel": {
-        "presets": [
-            [
-                "env",
-                {
-                    "targets": {
-                        "browsers": [
-                            "last 2 versions",
-                            "safari >= 7"
-                        ]
-                    }
-                }
-            ]
-        ]
     }
 }
